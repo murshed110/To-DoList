@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="container">
+    <header>
+      <h1>📋 Task Manager</h1>
+      <button class="theme-btn" id="themeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="totalCount">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="completedCount">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="pendingCount">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span>Overall Progress</span>
+        <span id="progressPercentLabel">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 id="formTitle">Add New Task</h2>
+      <form id="taskForm">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="e.g. John">
+          <div class="error-text" id="err-firstName"></div>
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="e.g. Doe">
+          <div class="error-text" id="err-lastName"></div>
+        </div>
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="e.g. 25">
+          <div class="error-text" id="err-age"></div>
+        </div>
+        <div class="field">
+          <label for="department">Department</label>
+          <input type="text" id="department" placeholder="e.g. Sales">
+          <div class="error-text" id="err-department"></div>
+        </div>
+        <div class="field full">
+          <label for="taskDesc">Task Description</label>
+          <input type="text" id="taskDesc" placeholder="e.g. Prepare monthly report">
+          <div class="error-text" id="err-taskDesc"></div>
+        </div>
+        <div class="field">
+          <label for="priority">Priority</label>
+          <select id="priority">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="dueDate">Due Date</label>
+          <input type="date" id="dueDate">
+          <div class="error-text" id="err-dueDate"></div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Add Task</button>
+          <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <input type="text" id="searchInput" placeholder="🔍 Search by name...">
+        <select id="filterDept">
+          <option value="">All Departments</option>
+        </select>
+        <select id="sortBy">
+          <option value="none">Sort by...</option>
+          <option value="nameAsc">Name (A–Z)</option>
+          <option value="nameDesc">Name (Z–A)</option>
+          <option value="ageAsc">Age (Low–High)</option>
+          <option value="ageDesc">Age (High–Low)</option>
+          <option value="dueDate">Due Date</option>
+        </select>
+      </div>
+      <div class="toolbar">
+        <button class="toolbar-btn" id="exportBtn">📥 Export CSV</button>
+        <button class="toolbar-btn danger" id="clearAllBtn">🗑️ Clear All</button>
+        <div class="view-toggle">
+          <button id="cardViewBtn" class="active" type="button">🗃️ Cards</button>
+          <button id="tableViewBtn" type="button">📊 Table</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-header">
+      <h2>Tasks</h2>
+      <span class="count-badge" id="visibleCount">0 shown</span>
+    </div>
+
+    <div id="listContainer"></div>
+    <p class="empty-state" id="emptyState">No tasks yet. Add one above to get started!</p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
